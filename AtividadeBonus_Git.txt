@@ -1,1 +1,9 @@
 O Git é sistema que permite o controle de versões no desenvolvimento de um software, a partir dele é possível ver as mudanças no código fonte dos arquivos, também permite um controle melhor quando um grupo de desenvolvedores trabalham em um mesmo arquivo permitindo que seja possível juntar o trabalho de todos verificando as mudanças que ocorreriam se isso acontecesse.
+
+Comandos Utilizados (Todos os comandos foram feitos utilizando o terminal, Prompt de Comando e Git Bash):
+
+1º gh repo create		// criar o repositorio
+2º git branch  -M main 	// criar a branch main porque começa com branch master no git bash e no repositório a branch se chama main
+3º git add .		// adicionar os arquivos
+4º git commit  -m "Commit Inicial" 		// commit dos arquivos
+5º git push  -f origin main	// para mandar os arquivos diretos para o repositorio 
