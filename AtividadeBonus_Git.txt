@@ -3,7 +3,8 @@ O Git é sistema que permite o controle de versões no desenvolvimento de um sof
 Comandos Utilizados (Todos os comandos foram feitos utilizando o terminal, Prompt de Comando e Git Bash):
 
 1º gh repo create		// criar o repositorio
-2º git branch  -M main 	// criar a branch main porque começa com branch master no git bash e no repositório a branch se chama main
-3º git add .		// adicionar os arquivos
-4º git commit  -m "Commit Inicial" 		// commit dos arquivos
-5º git push  -f origin main	// para mandar os arquivos diretos para o repositorio 
+2º git pull origin main 	// da pull na branch
+3º git checkout main	// muda para branch main
+4º git add .		// adicionar os arquivos
+5º git commit  -m "Commit Inicial" 		// commit dos arquivos
+6º git push origin main	// para mandar os arquivos diretos para o repositorio 
