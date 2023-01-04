@@ -1,0 +1,1 @@
+O Git é sistema que permite o controle de versões no desenvolvimento de um software, a partir dele é possível ver as mudanças no código fonte dos arquivos, também permite um controle melhor quando um grupo de desenvolvedores trabalham em um mesmo arquivo permitindo que seja possível juntar o trabalho de todos verificando as mudanças que ocorreriam se isso acontecesse.
