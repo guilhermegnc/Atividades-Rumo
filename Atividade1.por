@@ -28,7 +28,7 @@ programa
 			consumoVeiculo = quilometrosRodados / litrosAbastecidos
 
 			//mostrar resultados
-			escreva("\nO consumo do veículo é ", consumoVeiculo, " litro(s) por quilômetro.\n\n")
+			escreva("\nO consumo do veículo é ", consumoVeiculo, " quilômetros por litro.\n\n")
 		}
 	}
 
@@ -49,7 +49,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 714; 
+ * @POSICAO-CURSOR = 818; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

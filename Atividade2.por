@@ -10,7 +10,7 @@ programa
 		logico valorNegativo
 
 		//entrada de valores
-		escreva("\nQual o consumo do veículo em litros por quilômetro? ")
+		escreva("\nQual o consumo do veículo em quilômetros por litro? ")
 		leia(consumoVeiculo)
 
 		escreva("\nQuantos litros foram abastecidos? ")
@@ -50,7 +50,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 811; 
+ * @POSICAO-CURSOR = 241; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
