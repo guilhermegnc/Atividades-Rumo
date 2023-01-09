@@ -8,7 +8,7 @@ namespace Atividade1_MediaNotas
 {
     public class CalculadoraMedia
     {
-        private List<float> notas = new List<float>();
+        private List<float> notas = new List<float>();  // lista com as notas da turma
         private float nota;
         private int contador = 0;
 
@@ -19,7 +19,7 @@ namespace Atividade1_MediaNotas
             while(!parada)
             {
                 Console.WriteLine("Nota do {0:N0}º Aluno", contador + 1);
-                if(!float.TryParse(Console.ReadLine(), out nota))
+                if(!float.TryParse(Console.ReadLine(), out nota)) // verifica se é um float
                 {
                     Console.WriteLine("Valor inválido");
                 }
@@ -28,7 +28,7 @@ namespace Atividade1_MediaNotas
                     notas.Add(nota);
                     contador++;
                 }
-                else if (nota == -1)
+                else if (nota == -1) // condição de parada
                 {
                     parada = true;
                 }

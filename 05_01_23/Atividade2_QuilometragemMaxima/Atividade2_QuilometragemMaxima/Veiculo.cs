@@ -14,7 +14,7 @@ namespace Atividade2_QuilometragemMaxima
         public void LerConsumo()
         {
             Console.WriteLine("Entre com o consumo do veículo em Km/L: ");
-            if (!float.TryParse(Console.ReadLine(), out ConsumoVeiculo))
+            if (!float.TryParse(Console.ReadLine(), out ConsumoVeiculo))    // verifica se é um float
             {
                 Console.WriteLine("Valor Inválido");
             }
@@ -31,7 +31,7 @@ namespace Atividade2_QuilometragemMaxima
             ValidaValor(LitrosAbastecidos);
         }
 
-        private void ValidaValor(float valor)
+        private void ValidaValor(float valor)   // verifica se o valor é menor que 0
         {
             if (valor <= 0)
             {

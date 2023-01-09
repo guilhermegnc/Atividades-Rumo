@@ -16,7 +16,7 @@ namespace Atividade1_ConsumoCarro
         public void LerCapacidadeTanque()
         {
             Console.WriteLine("Entre com a capacidade do tanque do veículo: ");
-            if (!float.TryParse(Console.ReadLine(), out CapacidadeTanque))
+            if (!float.TryParse(Console.ReadLine(), out CapacidadeTanque)) //verifica se é um float
             {
                 Console.WriteLine("Valor Inválido");
             }
