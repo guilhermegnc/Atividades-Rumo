@@ -23,7 +23,7 @@ namespace Exercicio3_Desafio.Repositories
                     file.Close();
                 }
             }
-            catch   // ERRO NO CAMINHO, PRÓVAVEL QUE PASTA DE DATASET NAÕ EXISTE NO DIRETÓRIO DA SOLUÇÃO
+            catch   // ERRO NO CAMINHO, PRÓVAVEL QUE PASTA DE DATASET NÃO EXISTE NO DIRETÓRIO DA SOLUÇÃO
             {
                 Directory.CreateDirectory(GetSolutionDirectory(null, false));
                 var file = File.Create(_Filepath);
