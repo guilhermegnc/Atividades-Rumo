@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,13 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Databases\**" />
     <Compile Remove="Utils\**" />
+    <EmbeddedResource Remove="Databases\**" />
     <EmbeddedResource Remove="Utils\**" />
+    <None Remove="Databases\**" />
     <None Remove="Utils\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Folder Include="Datasets\" />
   </ItemGroup>
 
 </Project>

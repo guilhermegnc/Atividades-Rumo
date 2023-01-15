@@ -18,12 +18,12 @@ namespace Exercicio3_Desafio.Services
 
             ConsoleKey key;
 
-            Console.CursorVisible = false;
+            Console.CursorVisible = false;      // CURSOR NÃO APARECER NO CONSOLE
 
             Console.Clear();
 
             string Header = "=============  GERENCIAMENTO PETSHOP  =============";
-            Console.SetCursorPosition((Console.WindowWidth - Header.Length) / 2, Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth - Header.Length) / 2, Console.CursorTop); // CURSOR NO MEIO DO CONSOLE
             Console.WriteLine(Header);
 
             do
@@ -44,7 +44,7 @@ namespace Exercicio3_Desafio.Services
 
                 key = Console.ReadKey(true).Key;
 
-                switch (key)
+                switch (key)    // MOVE PELO MENU USANDO AS SETAS DO TECLADO
                 {
                     case ConsoleKey.UpArrow:
                         {
@@ -58,7 +58,7 @@ namespace Exercicio3_Desafio.Services
                                 CurrentSelection += LineOption;
                             break;
                         }
-                    case ConsoleKey.Escape:
+                    case ConsoleKey.Escape:         // ESC FECHA O PROGRAMA
                         {
                             if (canCancel)
                                 return -1;

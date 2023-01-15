@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Exercicio3_Desafio.Repositories;
+using Exercicio3_Desafio.Entities;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,6 +16,44 @@ namespace Exercicio3_Desafio.Util
         private DateTime _DateReturn { get; set;  }
         private bool _DateBool { get; set;  }
 
+        public static bool AlreadyRegistered(string cpf, bool wanted = true)    // VERIFICA SE CPF JÁ ESTA
+        {                                                                       // CADASTRADO NO SISTEMA
+            ClientRepositories file = new ClientRepositories();                 // BOOL PARA NÃO MOSTRAR
+                                                                                // MENSAGEM DE ERRO        
+            var clients = file.GetAllElements();
+
+            foreach (var client in clients)
+            {
+                if (cpf.Equals(client.CPF)) 
+                {
+                    if (wanted)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nCPF já cadastrado");
+                        Console.ResetColor();
+                        return true;
+                    }
+                    else return true;
+                    
+                }
+            }
+           
+            return false;
+        }
+
+        public static bool HasSomeoneRegistered(List<Client> clients)   // VERIFICA SE HÁ ALGUEM CADASTRADO
+        {                                                               // NO SISTEMA
+            if (clients.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Não há clientes cadastrados");
+                Console.ResetColor();
+
+                return false;
+            }
+            else return true;
+        }
+
         public static bool ValidateName(string? name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -24,7 +64,7 @@ namespace Exercicio3_Desafio.Util
                 return false;
             }
 
-            else if (name.Length >= 3 && name.Length <= 80)
+            else if (name.Length >= 3 && name.Length <= 80)     // MINIMO 3 CARACTERES E MAXIMO 80
             {
                 return true;
             }
@@ -52,11 +92,11 @@ namespace Exercicio3_Desafio.Util
             }
             else
             {
-                cpf = cpf.Replace("-", "");              
-                cpf = cpf.Replace(".", "");               
+                cpf = cpf.Replace("-", "");           // RETIRA - DO CPF   
+                cpf = cpf.Replace(".", "");           // RETIRA . DO CPF     
                 foreach (char c in cpf)
                 {
-                    if (c < '0' || c > '9')
+                    if (c < '0' || c > '9')           // VERIFICA CADA DIGITO SE É UM NUMERO DE 0 A 9
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nCPF Inválido");
@@ -67,7 +107,7 @@ namespace Exercicio3_Desafio.Util
                 }                   
             }
 
-            if (cpf.Length != 11)
+            if (cpf.Length != 11)                   // VERIFICA TAMANHO DO CPF
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nCPF Inválido");
@@ -77,7 +117,7 @@ namespace Exercicio3_Desafio.Util
             }
 
             int Sum = 0;
-            int DigitCPF = 0;
+            int DigitCPF = 0;                       // ABAIXO O ALGORITMO DE VALIDAÇÃO DO CPF
             for (int i = 10; i >= 2; i--) 
             {
                 Sum += int.Parse(cpf[DigitCPF].ToString()) * i;
@@ -121,17 +161,17 @@ namespace Exercicio3_Desafio.Util
         {
             Validations ReturnData = new Validations();
 
-            string[] formats = { "dd/MM/yyyy", "dd/M/yyyy", "d/MM/yyyy", "d/M/yyyy",
-                                 "dd/MM/yy", "dd/M/yy", "d/MM/yy", "d/M/yy"};
+            string[] formats = { "dd/MM/yyyy", "dd/M/yyyy", "d/MM/yyyy", "d/M/yyyy",    // FORMATOS POSSIVEIS
+                                 "dd/MM/yy", "dd/M/yy", "d/MM/yy", "d/M/yy"};           // DE ENTRADA
             if (DateTime.TryParseExact(Console.ReadLine(), formats, new CultureInfo("pt-BR"),
                 DateTimeStyles.None, out var date))
             {
                 DateTime Today = DateTime.Today;
-                var Age = Today.Year - date.Year;
+                var Age = Today.Year - date.Year;   // CALCULO IDADE
 
-                if (date.Date > Today.AddYears(-Age)) Age--;
+                if (date.Date > Today.AddYears(-Age)) Age--;    // CASO AINDA NÃO TENHA FEITO ANIVERSARIO ESTE ANO
                 
-                if (Age < 16)
+                if (Age < 16)       // IDADE MINIMA
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Idade Mínima para utilização é 16 anos");
@@ -140,7 +180,7 @@ namespace Exercicio3_Desafio.Util
                     ReturnData._DateReturn = Convert.ToDateTime("01/01/0001");
                     ReturnData._DateBool = false;
                 }
-                else if (Age > 120)
+                else if (Age > 120)     // IDADE MAXIMA
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Idade Máxima para utilização é 120 anos");
@@ -162,19 +202,19 @@ namespace Exercicio3_Desafio.Util
                 Console.WriteLine("Data Inválida");
                 Console.ResetColor();
 
-                ReturnData._DateReturn = Convert.ToDateTime("01/01/0001");
-                ReturnData._DateBool = false;
-            }
+                ReturnData._DateReturn = Convert.ToDateTime("01/01/0001");      // RETORNA VALOR PARA SABER
+                ReturnData._DateBool = false;                                   // QUE A DATA ENTRADA É
+            }                                                                   // INVÁLIDA
 
             return ReturnData;
         }
 
-        public DateTime GetDate()
+        public DateTime GetDate()       // RETORNA A DATA
         {
             return _DateReturn;
         }
 
-        public bool GetValidation()
+        public bool GetValidation()     // RETORNA SE A DATA ESTÁ CORRETA
         {
             return _DateBool;
         }

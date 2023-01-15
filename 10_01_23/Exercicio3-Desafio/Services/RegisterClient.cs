@@ -14,7 +14,7 @@ namespace Exercicio3_Desafio.Services
     {
         private Client _NewClient = new Client();
 
-        public Client GetClient()
+        public Client GetClient()   // RETORNA O CLIENTE CADASTRADO
         {
             return _NewClient;
         }
@@ -52,8 +52,21 @@ namespace Exercicio3_Desafio.Services
 
             if (Validation)
             {
-                _NewClient.CPF = CPF;
-                return true;
+                Validation = Validations.AlreadyRegistered(CPF);
+                if(!Validation) 
+                {
+                    _NewClient.CPF = CPF;
+                    return true;
+                }
+
+                else
+                {
+                    Console.WriteLine("\nAperte uma tecla para continuar: ");
+                    Console.ReadKey();
+
+                    return false;
+                }
+                
             }
             else
             {
@@ -75,7 +88,7 @@ namespace Exercicio3_Desafio.Services
 
             if (Validation.GetValidation())
             {
-                _NewClient.DateOfBirth = Validation.GetDate();
+                _NewClient.DateOfBirth = Validation.GetDate().Date;
                 return true;
             }
 

@@ -8,7 +8,7 @@ namespace Exercicio3_Desafio.Services
 {
     public class ReadCPF
     {
-        private static string _CPF { get; set; } = "";
+        private static string _CPF = "";
 
         public static string? Read()
         {
@@ -17,7 +17,7 @@ namespace Exercicio3_Desafio.Services
             bool loop = true;
             while (loop)
             {
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true); // LE A TECLA APERTADA
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.Enter:
@@ -25,7 +25,7 @@ namespace Exercicio3_Desafio.Services
                         loop = false;
                         break;
 
-                    case ConsoleKey.Backspace:
+                    case ConsoleKey.Backspace:      // REMOVE O ULTIMO CARACTERE ESCRITO DA STRING E DO CONSOLE
 
                         if (_CPF.Length >= 1) {
                             _CPF = _CPF.Remove(_CPF.Length - 1, 1);
@@ -36,20 +36,20 @@ namespace Exercicio3_Desafio.Services
                         break;
 
                     default:
-                        if (_CPF.Length == 3 || _CPF.Length == 7 && _CPF.Length < 10)
+                        if (_CPF.Length == 3 || _CPF.Length == 7 && _CPF.Length < 10) // ADICIONA PONTO AO CPF
                         {
                             _CPF += ".";
                             Console.Write(".");
                         }
 
 
-                        if (_CPF.Length == 11) 
+                        if (_CPF.Length == 11)  // ADICIONA - AO CPF
                         {
                             _CPF += "-";
                             Console.Write("-"); 
                         }
 
-                        if (_CPF.Length < 14)
+                        if (_CPF.Length < 14)       // TAMANHO MAXIMO DA STRING, NÃO É POSSÍVEL DIGITAR MAIS
                         {
                             _CPF += keyInfo.KeyChar;
                             Console.Write(keyInfo.KeyChar);
