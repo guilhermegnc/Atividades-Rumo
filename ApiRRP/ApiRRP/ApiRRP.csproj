@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>c30e06d2-5721-418b-bba9-67a763e80684</UserSecretsId>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRP.Domains\RRP.Domains.csproj" />
+    <ProjectReference Include="..\RRP.Ioc\RRP.Ioc.csproj" />
+    <ProjectReference Include="..\RRP.Repositories\RRP.Repositories.csproj" />
+    <ProjectReference Include="..\RRP.Services\RRP.Services.csproj" />
+  </ItemGroup>
+
+</Project>
