@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiPonto.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class LiderancaController : ControllerBase
     {
@@ -16,21 +16,21 @@ namespace ApiPonto.Controllers
             _service = service;
         }
 
-        //[Authorize(Roles = "1,2")]
+        [Authorize(Roles = "1,2")]
         [HttpGet("Lideranca")]
         public IActionResult Listar()
         {
             return StatusCode(200, _service.Listar());
         }
 
-        //[Authorize(Roles = "1,2")]
+        [Authorize(Roles = "1,2")]
         [HttpGet("Lideranca/{liderancaId}")]
         public IActionResult ObterPorId([FromRoute] int liderancaId)
         {
             return StatusCode(200, _service.Obter(liderancaId));
         }
 
-        //[Authorize(Roles = "1,2")]
+        [Authorize(Roles = "1,2")]
         [HttpPost("Lideranca")]
         public IActionResult Inserir([FromBody] Lideranca model)
         {
@@ -49,7 +49,7 @@ namespace ApiPonto.Controllers
             }
         }
 
-        //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         [HttpDelete("Lideranca/{liderancaId}")]
         public IActionResult Deletar([FromRoute] int liderancaId)
         {
@@ -57,7 +57,7 @@ namespace ApiPonto.Controllers
             return StatusCode(200);
         }
 
-        //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         [HttpPut("Lideranca")]
         public IActionResult Atualizar([FromBody] Lideranca model)
         {
