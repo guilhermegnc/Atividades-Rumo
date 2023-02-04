@@ -1,4 +1,6 @@
-﻿using RRP.Domains.Exceptions;
+﻿using Robo.Model;
+using Robo.Service;
+using RRP.Domains.Exceptions;
 using RRP.Domains.Models;
 using RRP.Repositories.Repositorie;
 using System;
@@ -59,6 +61,24 @@ namespace RRP.Services
             }
         }
 
+        public void InserirRobo()
+        {
+            try
+            {
+                var produtos = CriarModel();
+                _repositorio.AbrirConexao();
+                foreach (var produto in produtos)
+                {
+                    _repositorio.Inserir(produto);
+                }
+            }
+            finally
+            {
+                _repositorio.FecharConexao();
+            }
+            
+        }
+
         private static void ValidarModelProduto(Produto model)
         {
             if (model is null)
@@ -83,6 +103,24 @@ namespace RRP.Services
             var time = today.Year - date.Year;
             if (date > today.AddYears(-time)) time--;
             return time;
+        }
+
+        private static List<Produto> CriarModel()
+        {
+            var livros = Scrapping.ScrappingService();
+            List<Produto> produtos = new List<Produto>();
+            foreach(var livro in livros)
+            {
+                var produto = new Produto();
+                produto.Nome = livro.Titulo;
+                produto.Preco = livro.Preco;
+                produto.DataCadastro = DateTime.Now;
+                produto.Situacao = true;
+
+                produtos.Add(produto);
+            }
+
+            return produtos;
         }
     }
 }

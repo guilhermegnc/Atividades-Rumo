@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Robo\Robo.csproj" />
     <ProjectReference Include="..\RRP.Domains\RRP.Domains.csproj" />
     <ProjectReference Include="..\RRP.Ioc\RRP.Ioc.csproj" />
     <ProjectReference Include="..\RRP.Repositories\RRP.Repositories.csproj" />

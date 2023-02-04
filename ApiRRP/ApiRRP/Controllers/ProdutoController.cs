@@ -45,6 +45,24 @@ namespace ApiPonto.Controllers
             }
         }
 
+        [HttpPost("Funcionario/Robo")]
+        public IActionResult InserirRobo()
+        {
+            try
+            {
+                _service.InserirRobo();
+                return StatusCode(201);
+            }
+            catch (ValidacaoException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
+        }
+
         //[Authorize(Roles = "1")]
         [HttpDelete("Funcionario/{Nome}")]
         public IActionResult Deletar([FromRoute] string? Nome)
