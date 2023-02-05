@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Guilherme Gomes">
+  <title>Robo Rastreio Produtos</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+
+    <style>
+      .gradient-custom-3 {
+          /* fallback for old browsers */
+          background: #c6c6ca;
+
+          /* Chrome 10-25, Safari 5.1-6 */
+          background: -webkit-linear-gradient(to right, #232324, rgba(25, 25, 26, 0.8));
+
+          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: linear-gradient(to right, #232324, rgba(25, 25, 26, 0.8))
+      }
+      .gradient-custom-4 {
+          /* fallback for old browsers */
+          background: #c6c6ca;
+
+          /* Chrome 10-25, Safari 5.1-6 */
+          background: -webkit-linear-gradient(to right, #6d6d6e, rgba(7, 7, 7, 0.6));
+
+          border-color: bisque;
+
+          /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: linear-gradient(to right, #434344, rgba(7, 7, 7, 0.6))
+      }
+
+      .HeaderText{
+        font-family: sans-serif;
+        color:rgb(98, 98, 100);
+        padding-top:30px;
+        padding-left:20px;
+      }
+    </style>
+</head>
+<body>
+    <section class="vh-100 bg-image"
+        style="background-image: url('https://img.freepik.com/free-vector/graphic-design-geometric-wallpaper_52683-34399.jpg?w=740&t=st=1675585752~exp=1675586352~hmac=a7fa97777a2bffe4bb5c48bff27fe54df6211c0ce81c0c2aad0f773185051af8');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="HeaderDiv col-xl-9">
+            
+                    <div class="card" style="border-radius: 15px;">
+                      <h3 class="HeaderText font-weight-bold text-center">Cadastro Produto</h3>
+                      <div class="card-body">
+            
+                        <div class="row align-items-center pt-4 pb-3">
+                          <div class="col-md-3 ps-5">
+            
+                            <h6 class="mb-0">Nome do Produto</h6>
+            
+                          </div>
+                          <div class="col-md-9 pe-5">
+            
+                            <input type="text" class="form-control form-control-lg" />
+            
+                          </div>
+                        </div>
+            
+                        <hr class="mx-n3">
+            
+                        <div class="row align-items-center py-3">
+                          <div class="col-md-3 ps-5">
+            
+                            <h6 class="mb-0">Preço do Produto</h6>
+            
+                          </div>
+                          <div class="col-md-9 pe-5">
+            
+                            <input type="email" class="form-control form-control-lg" />
+            
+                          </div>
+                        </div>
+            
+                        <hr class="mx-n3">
+            
+                        <div class="row align-items-center py-3">
+                          <div class="col-md-3 ps-5">
+            
+                            <h6 class="mb-0">Data do cadastro</h6>
+            
+                          </div>
+                          <div class="col-md-9 pe-5">
+            
+                            <input id="startDate" class="form-control" type="date" />
+            
+                          </div>
+                        </div>
+            
+                        <hr class="mx-n3">
+            
+                        <div class="px-5 py-4 text-center">
+                          <button type="submit" class="btn btn-lg btn-dark gradient-custom-4">Cadastrar</button>
+                        </div>
+                        <div class="px-5 text-center">
+                            <button type="submit" class="btn btn-lg btn-dark gradient-custom-3">Cadastrar usando o robo</button>
+                        </div>
+            
+                      </div>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+        </div>
+      </section>
+</body>
