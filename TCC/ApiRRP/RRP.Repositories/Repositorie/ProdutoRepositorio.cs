@@ -59,6 +59,8 @@ namespace RRP.Repositories.Repositorie
 
         public List<ListaProdutos> ListarProdutos()
         {
+            // ACABEI OPTANDO POR FAZER O CALCULO DA DIFERENCA DO PRECO E PORCENTAGEM NO DB, POR ISSO ESTE SELECT DESTA FORMA
+
             string comandoSql = @"SELECT Nome, Preco, DataCadastro, Situacao, 
 		                            Preco-PrecoAnterior AS DiferencaPreco, 
                                     (Preco-PrecoAnterior) / PrecoAnterior * 100 AS PorcentagemDiferenca

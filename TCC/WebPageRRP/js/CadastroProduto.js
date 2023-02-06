@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    // Apenas aceita numeros e , e .
     $(".allownumericwithdecimal").on("keypress keyup blur", function (event) {
         $(this).val($(this).val().replace(/[^0-9\.|\,]/g, ''));
         if (event.which == 44) {
@@ -10,6 +12,7 @@ $(document).ready(function () {
         }
     });
 
+    // Tem que preencher todos os campos para o botão habilitar
     $('#btnCadastrar').prop('disabled', true);
     $('input').keyup(function () {
         var empty = false;
@@ -35,11 +38,7 @@ function cadastrar() {
     var nome = $('#nome').val();
     var preco = $('#preco').val();
     var data = $('#dataCadastro').val();
-    console.log(nome);
-    preco = preco.replace(",", ".");
-    console.log(preco);
-    
-    console.log(data);
+    preco = preco.replace(",", "."); // Troca , por . para inserção no db
 
     var objeto = {
         nome: nome,

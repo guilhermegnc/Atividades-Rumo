@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
+        //PEGA A COTAÇÃO ATUAR DE EURO PARA REAL, JÁ QUE O SITE ONDE ESTÁ SENDO FEITO O SCRAPPING O PREÇO DOS PRODUTOS
+        //ESTA EM EURO. A COTAÇÃO É PEGA DE UMA API QUE ACHEI NA INTERNET
+
 namespace Robo.Service
 {
     public static class CotacaoAtual

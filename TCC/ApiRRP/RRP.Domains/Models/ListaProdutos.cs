@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+        //CRIEI ESTÁ CLASSE PARA O RETORNO DO DB, JÁ QUE VEM A DIFERENCA DE PRECO E A PORCENTAGEM DA DIFERENÇA DE PRECO
+
 namespace RRP.Domains.Models
 {
     public class ListaProdutos

@@ -1,9 +1,6 @@
-function Login(email = null, senha = null) {
+function Login() {
     var email = $('#email').val();
     var senha = $('#senha').val();
-
-    console.log(email);
-    console.log(senha);
 
     var objeto = {
         email: email,
@@ -12,9 +9,7 @@ function Login(email = null, senha = null) {
         cargoUsuario: null
     }
 
-    var json = JSON.stringify(objeto);
-
-    console.log(json);
+    var json = JSON.stringify(objeto);;
 
     $.ajax({
         url: 'https://localhost:44393/Autorizacao',
@@ -24,6 +19,8 @@ function Login(email = null, senha = null) {
         dataType: 'json'
     }).done(function (resposta) {
         SalvarDadosLogin(resposta);
+
+        // Troca o botão de login pelo de sair/logout, e mostra a opção de cadastrar produto
         $('#login').hide();
         $('#logout').show();
         $("#cadastroProdutos").show();
@@ -38,6 +35,7 @@ function Login(email = null, senha = null) {
 }
 
 function LoginCookies() {
+    // Caso já haja cookies com os dados de acesso
     $('#login').hide();
     $('#logout').show();
     $("#cadastroProdutos").show();
@@ -50,6 +48,7 @@ function SalvarDadosLogin(dadosToken) {
 }
 
 function logout() {
+    //Remove os cookies e volta os botões para o valor inicial
     Cookies.remove('bearer')
     Cookies.remove('nivelAcesso')
     Cookies.remove('nomeUsuario')

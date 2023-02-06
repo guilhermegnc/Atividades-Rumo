@@ -2,10 +2,12 @@ $(document).ready(function () {
     ListarProdutos();
     $(".preloading").hide();
 
-    var value = Cookies.get('nivelAcesso')
+    // Verifica se há cookies com o nivel de acesso
+    var value = Cookies.get('nivelAcesso') 
     if(value == 1)
         LoginCookies();
 
+    // Necessita que todos os campos estejam preenchidos para habilitar o botão
     $('#btnEntrar').prop('disabled', true);
     $('.login').keyup(function () {
         var empty = false;

@@ -8,6 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+
+        // NO CÓDIGO ABAIXO É PEGO OS TITULOS E PRECOS DE LIVROS, ACABEI POR INICIALMENTE FAZER UMA COLETA DE DADOS DE 
+        // TODAS AS CATEGORIAS DE LIVRO POR TODO O SITE, PORÉM O TEMPO DE PROCESSAMENTO ERA UM POUCO ALTO, ENTÃO 
+        // ACABEI POR PEGAR APENAS UMA CATEGORIA QUE FOI A DE FANTASIA, QUE HAVIA UMA QUANTIDADE BOA DE LIVROS,
+        // POREM DEIXEI TAMBEM A IMPLEMENTACAO PARA FAZER O SCRAPPING POR TODO O SITE, BASTA COLOCAR A VARIAVEL
+        //BOLEANA NA CLASSE ABAIXO PARA TRUE
+
+
 namespace Robo.Service
 {
     public class Scrapping
@@ -86,6 +94,7 @@ namespace Robo.Service
                     if (proximaPagina == null) break;
                     else
                     {
+                        // Para passar para próxima página, troca o final da url
                         var startPoint = url.LastIndexOf('/');
                         StringBuilder myStringBuilder = new StringBuilder(url);
                         myStringBuilder.Replace(url.Substring(startPoint + 1), proximaPagina.Attributes["href"].Value);

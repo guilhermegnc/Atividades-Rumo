@@ -1,0 +1,14 @@
+CREATE TABLE Usuario (
+	EmailUsuario VARCHAR(255) NOT NULL,
+    NomeUsuario VARCHAR(255) NOT NULL,
+    Senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Produtos (
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Preco DECIMAL(20,2) NOT NULL,
+    DataCadastro DATE NOT NULL,
+    Situacao BOOL NOT NULL
+)
+	
