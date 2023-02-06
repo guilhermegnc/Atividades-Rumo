@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiPonto.Controllers
 {
-    //[Authorize]
     [AllowAnonymous]
     [ApiController]
     public class ProdutoController : ControllerBase
@@ -17,18 +16,16 @@ namespace ApiPonto.Controllers
             _service = service;
         }
 
-        //[Authorize(Roles = "1")]
-        [HttpGet("Funcionario")]
+        [HttpGet("Produto")]
         [ProducesResponseType(typeof(Produto), 200)]
         [ProducesResponseType(401)]
-        public IActionResult Listar([FromQuery] string? nomeDoFuncionário)
+        public IActionResult Listar()
         {
-            return StatusCode(200, _service.Listar(nomeDoFuncionário));
+            return StatusCode(200, _service.Listar());
         }
 
-        //[Authorize(Roles = "1")]
-        [HttpPost("Funcionario")]
-        public IActionResult Inserir([FromBody] Produto model)
+        [HttpPost("Produto")]
+        public IActionResult Inserir([FromBody] ProdutoInsert model)
         {
             try
             {
@@ -45,7 +42,7 @@ namespace ApiPonto.Controllers
             }
         }
 
-        [HttpPost("Funcionario/Robo")]
+        [HttpPost("Produto/Robo")]
         public IActionResult InserirRobo()
         {
             try
@@ -63,8 +60,7 @@ namespace ApiPonto.Controllers
             }
         }
 
-        //[Authorize(Roles = "1")]
-        [HttpDelete("Funcionario/{Nome}")]
+        [HttpDelete("Produto/{Nome}")]
         public IActionResult Deletar([FromRoute] string? Nome)
         {
             _service.Deletar(Nome);

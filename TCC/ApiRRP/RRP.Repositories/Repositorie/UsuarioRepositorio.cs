@@ -19,9 +19,8 @@ namespace RRP.Repositories.Repositorie
 
         public Usuario? ObterUsuarioPorCredenciais(string email, string senha)
         {
-            string comandoSql = @"SELECT u.EmailUsuario, u.NomeUsuario, u.CargoId FROM Usuario u
-                                    JOIN Cargos c ON u.CargoId = c.CargoId
-                                    WHERE u.EmailUsuario = @email AND u.SenhaUsuario = @senha";
+            string comandoSql = @"SELECT EmailUsuario, NomeUsuario FROM Usuario
+                                    WHERE EmailUsuario = @email AND Senha = @senha";
 
             using (var cmd = new MySqlCommand(comandoSql, _conn))
             {
@@ -36,7 +35,7 @@ namespace RRP.Repositories.Repositorie
                         {
                             Nome = rdr["NomeUsuario"].ToString(),
                             Email = rdr["EmailUsuario"].ToString(),
-                            CargoUsuario = (EnumCargoUsuario)Convert.ToInt32(rdr["CargoId"])
+                            CargoUsuario = EnumCargoUsuario.Funcionario
                         };
                     }
                     else

@@ -22,8 +22,8 @@ namespace RRP.Services
             {
                 _repositorio.AbrirConexao();
 
-                if (isDescriptografado)
-                    senha = CriptografarSha512(senha);
+                //if (isDescriptografado)
+                //    senha = CriptografarSha512(senha);
 
                 return _repositorio.ObterUsuarioPorCredenciais(email, senha);
             }

@@ -16,7 +16,7 @@ namespace RRP.Repositories.Repositorie
         {
         }
 
-        public void Inserir(Produto model)
+        public void Inserir(ProdutoInsert model)
         {
            string comandoSql = @"INSERT INTO Produtos 
                                     (Nome, Preco, DataCadastro, Situacao) 
@@ -27,12 +27,12 @@ namespace RRP.Repositories.Repositorie
             {
                 cmd.Parameters.AddWithValue("@Nome", model.Nome);
                 cmd.Parameters.AddWithValue("@Preco", model.Preco);
-                cmd.Parameters.AddWithValue("@DataCadastro", model.DataCadastro);
-                cmd.Parameters.AddWithValue("@Situacao", model.Situacao);
+                cmd.Parameters.AddWithValue("@DataCadastro", DateTime.Now);
+                cmd.Parameters.AddWithValue("@Situacao", true);
                 cmd.ExecuteNonQuery();
             }
         }
-        public void Atualizar(Produto model)
+        public void Atualizar(ProdutoInsert model)
         {
             string comandoSql = @"UPDATE Produtos 
                                     SET Situacao = false
@@ -57,7 +57,7 @@ namespace RRP.Repositories.Repositorie
             }
         }
 
-        public List<ListaProdutos> ListarProdutos(string? nome)
+        public List<ListaProdutos> ListarProdutos()
         {
             string comandoSql = @"SELECT Nome, Preco, DataCadastro, Situacao, 
 		                            Preco-PrecoAnterior AS DiferencaPreco, 
@@ -67,14 +67,8 @@ namespace RRP.Repositories.Repositorie
 		                                From Produtos) x
                                 where Situacao != false";
 
-            if (!string.IsNullOrWhiteSpace(nome))
-                comandoSql += " WHERE Nome LIKE @nome";
-
             using (var cmd = new MySqlCommand(comandoSql, _conn))
             {
-                if (!string.IsNullOrWhiteSpace(nome))
-                    cmd.Parameters.AddWithValue("@nome", "%" + nome + "%");
-
                 using (var rdr = cmd.ExecuteReader())
                 {
                     var produtos = new List<ListaProdutos>();

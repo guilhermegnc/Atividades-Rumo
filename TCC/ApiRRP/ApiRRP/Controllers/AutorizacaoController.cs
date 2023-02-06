@@ -23,11 +23,11 @@ namespace RPP.Controllers
         [ProducesResponseType(typeof(Token), 200)]
         [ProducesResponseType(401)]
         [HttpPost("Autorizacao")]
-        public IActionResult Login([FromQuery] string email, string senha)
+        public IActionResult Login([FromBody] Usuario model)
         {      
             try
             {                
-                var token = _service.Login(email, senha);
+                var token = _service.Login(model.Email, model.Senha);
                 return StatusCode(200, token);
             }
             catch (Exception)

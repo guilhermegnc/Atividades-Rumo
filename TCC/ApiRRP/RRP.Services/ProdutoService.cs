@@ -20,12 +20,12 @@ namespace RRP.Services
             _repositorio = repositorio;
         }
 
-        public List<ListaProdutos> Listar(string? nome)
+        public List<ListaProdutos> Listar()
         {
             try
             {
                 _repositorio.AbrirConexao();
-                return _repositorio.ListarProdutos(nome);
+                return _repositorio.ListarProdutos();
             }
             finally
             {
@@ -45,7 +45,7 @@ namespace RRP.Services
                 _repositorio.FecharConexao();
             }
         }
-        public void Inserir(Produto model)
+        public void Inserir(ProdutoInsert model)
         {
             try
             {
@@ -69,6 +69,8 @@ namespace RRP.Services
                 _repositorio.AbrirConexao();
                 foreach (var produto in produtos)
                 {
+                    var existe = _repositorio.SeExiste(produto.Nome);
+                    if (existe) _repositorio.Atualizar(produto);
                     _repositorio.Inserir(produto);
                 }
             }
@@ -79,7 +81,7 @@ namespace RRP.Services
             
         }
 
-        private static void ValidarModelProduto(Produto model)
+        private static void ValidarModelProduto(ProdutoInsert model)
         {
             if (model is null)
                 throw new ValidacaoException("O json está mal formatado, ou foi enviado vazio.");
@@ -91,31 +93,18 @@ namespace RRP.Services
             if (model.Nome.Trim().Length < 3 || model.Nome.Trim().Length > 255)
                 throw new ValidacaoException("O nome precisa ter entre 3 a 255 caracteres.");
 
-            if (ObterTempo(model.DataCadastro) < 0)
-                throw new ValidacaoException("Tempo do cadastro é invalido.");
-
             model.Nome = model.Nome.Trim();
         }
 
-        private static int ObterTempo(DateTime date)
-        {
-            var today = DateTime.Today;
-            var time = today.Year - date.Year;
-            if (date > today.AddYears(-time)) time--;
-            return time;
-        }
-
-        private static List<Produto> CriarModel()
+        private static List<ProdutoInsert> CriarModel()
         {
             var livros = Scrapping.ScrappingService();
-            List<Produto> produtos = new List<Produto>();
+            List<ProdutoInsert> produtos = new List<ProdutoInsert>();
             foreach(var livro in livros)
             {
-                var produto = new Produto();
+                var produto = new ProdutoInsert();
                 produto.Nome = livro.Titulo;
                 produto.Preco = livro.Preco;
-                produto.DataCadastro = DateTime.Now;
-                produto.Situacao = true;
 
                 produtos.Add(produto);
             }
