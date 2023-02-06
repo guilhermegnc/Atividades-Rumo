@@ -1,0 +1,1 @@
+O cadastro do funcionario/usuario, deixei sendo feita no proprio banco de dados, ou seja, ela não está sendo feita pela API, com isso comentei a parte do código onde a senha é codificada em SHA512, apenas por praticidade, assim não sendo necessário cadastrar no db usando uma senha com SHA512

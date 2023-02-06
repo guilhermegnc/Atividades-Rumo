@@ -123,6 +123,9 @@ namespace Robo.Service
                 var Preco = HtmlEntity.DeEntitize(document.DocumentNode.SelectSingleNode(precoXPath).InnerText.Replace("£", ""));
                 livro.Preco = Convert.ToDecimal(Preco.Remove(0, 1), new CultureInfo("en-US")) * CotacaoAtual.Consulta();
 
+
+                // Está conversão é feita porque no título do livro havia um caracter que não era possivel decodificar
+                // mesmo com as funções acima
                 if (livro.Titulo.Contains("Full Moon over "))
                     livro.Titulo = "Full Moon over Noah's Ark: An Odyssey to Mount Ararat and Beyond";
 
